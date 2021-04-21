@@ -26,6 +26,7 @@
     <table class="table table-striped">
         <thead>
         <tr>
+            <th scope="col">#</th>
             <th scope="col"></th>
             <th scope="col">Jméno</th>
             <th scope="col">Příjmení</th>
@@ -35,6 +36,7 @@
         </thead>
         <tbody>
         <tr th:each="ucastnik, iterStat : ${ucastnici}">
+            <td th:text="${iterStat.count}"></td>
             <td>
                 <i class="las la-venus" style="color: red;" th:if="${ucastnik.pohlavi == T(cz.czechitas.java2webapps.lekce4.entity.Pohlavi).ZENA}"></i>
                 <i class="las la-mars"  style="color: blue;" th:if="${ucastnik.pohlavi == T(cz.czechitas.java2webapps.lekce4.entity.Pohlavi).MUZ}"></i>

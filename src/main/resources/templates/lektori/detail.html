@@ -24,26 +24,14 @@
         </ul>
     </header>
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Jméno a příjmení</th>
-            <th scope="col">Role</th>
-            <th scope="col"></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="lektor, iterStat : ${lektori}">
-            <td th:text="${iterStat.count}"></td>
-            <td th:text="${lektor.jmeno}">Markéta Pátková</td>
-            <td th:if="${lektor.role} == ${T(cz.czechitas.java2webapps.lekce4.entity.Role).WORKSHOPISTKA}"><i class="las la-bell"></i> workshopistka</td>
-            <td th:if="${lektor.role} == ${T(cz.czechitas.java2webapps.lekce4.entity.Role).KOUC}"><i class="las la-laptop-code"></i> kouč</td>
-            <td th:if="${lektor.role} == ${T(cz.czechitas.java2webapps.lekce4.entity.Role).LEKTOR}"><i class="las la-graduation-cap"></i> lektor</td>
-            <td><a href="/lektori/detail" th:href="@{/lektori/detail(id=${iterStat.index})}"class="btn btn-primary">Detail</a></td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${lektor.jmeno}">jmeno</h5>
+            <p class="card-text">Role:
+                <span th:text="${lektor.role}">role</span>
+            </p>
+        </div>
+    </div>
 
 </div>
 </body>

@@ -24,36 +24,21 @@
         </ul>
     </header>
 
-    <!--
-    Příklad výpisu data: <span th:text="${#temporals.format(date)}">21. dubna 2021</span>
-    Příklad výpisu času: <span th:text="${#temporals.format(time, 'H:mm')}">18:00</span>
-    -->
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">Název lekce</th>
-            <th scope="col">Datum</th>
-            <th scope="col">Čas</th>
-            <th scope="col">Místo</th>
-            <th scope="col"></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="l, iterStat : ${lekce}">
-            <td th:text="${l.nazev}">nazev</td>
-            <td th:text="${#temporals.format(l.datum)}">datum</td>
-            <td>
-                <span th:text="${#temporals.format(l.casOd, 'H:mm')}">cas od</span>-
-                <span th:text="${#temporals.format(l.casDo, 'H:mm')}">cas do</span>
-            </td>
-            <td>
-                <span th:if="${l.misto} != null" th:text="${l.misto}">Stokorcový les</span>
-                <em th:if="${l.misto} == null">bude upřesněno</em>
-            </td>
-            <td><a href="/lekce/detail" th:href="@{/lekce/detail(id=${iterStat.index})}"class="btn btn-primary">Detail</a></td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title" th:text="${lekcia.nazev}">jmeno</h5>
+            <p class="card-text">Datum:
+                <span th:text="${#temporals.format(lekcia.datum)}">datum</span>
+            </p>
+            <p class="card-text">Čas:
+                <span th:text="${#temporals.format(lekcia.casOd, 'H:mm')} + '-' + ${#temporals.format(lekcia.casDo, 'H:mm')}">cas</span>
+            </p>
+            <p class="card-text">Místo:
+                <span th:if="${lekcia.misto} != null" th:text="${lekcia.misto}">misto</span>
+                <em th:if="${lekcia.misto} == null">bude upřesněno</em>
+            </p>
+        </div>
+    </div>
 </div>
 </body>
 </html>
